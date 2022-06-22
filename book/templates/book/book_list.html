@@ -1,0 +1,8 @@
+{% comment %} {%   %}は何らかの処理を行う場合に用いられ、{{  }}はデータを扱う場合に用いられる {% endcomment %}
+{% for item in object_list %}
+<ul>
+    <li>{{ item.title }}</li>
+    <li>{{ item.text }}</li>
+    <li>{{ item.category }}</li>
+</ul>
+    {% endfor %}
