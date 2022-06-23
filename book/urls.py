@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 
 from . import views
@@ -5,5 +6,6 @@ from . import views
 urlpatterns = [
     path('book/', views.ListBookView.as_view(), name="list-book"),
     path('book/<int:pk>/detail/', views.DetailBookView.as_view(), name="detail-book"),
-    path('book/create/', views.CreateBookView.as_view(), name="create-book"),    
+    path('book/create/', views.CreateBookView.as_view(), name="create-book"),
+    path('book/<int:pk>/delete/', views.DeleteBookView.as_view(), name="delete-book"),    
 ]
