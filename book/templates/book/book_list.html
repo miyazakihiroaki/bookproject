@@ -12,11 +12,14 @@
     </head>
     <body>
         {% for item in object_list %}
-        <ul>
-            <li>{{ item.title }}</li>
-            <li>{{ item.text }}</li>
-            <li>{{ item.category }}</li>
-        </ul>
+        <div class="card">
+            <h5 class="card-header">{{item.title}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{ item.text }}</p>
+                <a href="#" class="btn btn-primary"> Go somewhere </a>
+                <h6 class="card-title">{{ item.category }}</h6>
+            </div>
+        </div>
         {% endfor %}
     </body>
 </html>
