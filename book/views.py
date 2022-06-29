@@ -39,5 +39,6 @@ class UpdateBookView(UpdateView):
     
 
 def index_view(request):
+    print('index_view is called')
     return render(request, 'book/index.html',{'somedata':100})
     
