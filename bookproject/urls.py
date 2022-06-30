@@ -5,6 +5,7 @@ from django.urls import path, include
 urlpatterns = [
     # urls.pyファイルは上から順にURLの照合が行われる
     path('admin/', admin.site.urls),
+    path('accounts/',include('django.contrib.auth.urls')),
     # ↓どんな文字列でrequestが送られてきたとしても「include('book.urls')」を呼び出す。
     path('', include('book.urls')),
 ]
