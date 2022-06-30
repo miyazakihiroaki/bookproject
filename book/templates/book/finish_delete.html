@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}消去完了{% endblock%}
+{% block h1 %}消去完了しました。一覧ページに戻りましょう！！！{% endblock%}
+
+{% block content %}
+<a  class="btn btn-primary" href="{% url 'list-book' %}"> 一覧へ </a>
+{% endblock %}
