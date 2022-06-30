@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout
 from django.urls import reverse_lazy 
 from django.views.generic import (ListView, DetailView, CreateView, DeleteView, UpdateView,)
 from .models import Book
@@ -36,7 +37,12 @@ class UpdateBookView(UpdateView):
     template_name = 'book/book_update.html'
     # 操作が完了した後にどこのページに飛ぶのかを決める
     success_url = reverse_lazy('list-book')
-    
+
+
+def logout_view(request):
+    logout(request)
+    # return render(request, 'book/index.html')
+    return redirect('index')
 
 def index_view(request):
     print('index_view is called')
