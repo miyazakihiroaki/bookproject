@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout
 from django.urls import reverse_lazy 
 from django.views.generic import (ListView, DetailView, CreateView, DeleteView, UpdateView,)
 from .models import Book
@@ -53,11 +52,6 @@ class FinishAddView(TemplateView):
 
 class FinishUpdateView(TemplateView):
     template_name = 'book/finish_update.html'
-
-def logout_view(request):
-    logout(request)
-    # return render(request, 'book/index.html')
-    return redirect('index')
 
 def index_view(request):
     print('index_view is called')
