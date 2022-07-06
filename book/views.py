@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from typing_extensions import Self
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy 
@@ -6,18 +7,18 @@ from .models import Book, Review
 from django.views.generic import TemplateView
 
 
-class ListBookView(ListView):
+class ListBookView(LoginRequiredMixin, ListView):
     template_name = 'book/book_list.html'
     model=Book
 
 
-class DetailBookView(DetailView):
+class DetailBookView(LoginRequiredMixin, DetailView):
     template_name = 'book/book_detail.html'
     model = Book
     # このモデルってmodels.py?
 
 
-class CreateBookView(CreateView):
+class CreateBookView(LoginRequiredMixin, CreateView):
     template_name = 'book/book_create.html'
     model = Book
     fields = ('title', 'text', 'category', 'thumbnail')
@@ -26,7 +27,7 @@ class CreateBookView(CreateView):
     success_url = reverse_lazy('finish-add')
 
 
-class DeleteBookView(DeleteView):
+class DeleteBookView(LoginRequiredMixin, DeleteView):
     template_name = 'book/book_confirmdelete.html'
     model = Book
     # 操作が完了した後にどこのページに飛ぶのかを決める
@@ -34,7 +35,7 @@ class DeleteBookView(DeleteView):
     success_url = reverse_lazy('finish-delete')
     
 
-class UpdateBookView(UpdateView):
+class UpdateBookView(LoginRequiredMixin, UpdateView):
     model = Book
     fields = ('title', 'text', 'category', 'thumbnail')
     template_name = 'book/book_update.html'
