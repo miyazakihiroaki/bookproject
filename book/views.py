@@ -20,7 +20,7 @@ class DetailBookView(DetailView):
 class CreateBookView(CreateView):
     template_name = 'book/book_create.html'
     model = Book
-    fields = ('title', 'text', 'category')
+    fields = ('title', 'text', 'category', 'thumbnail')
     # 操作が完了した後にどこのページに飛ぶのかを決める
     # success_url = reverse_lazy('list-book')
     success_url = reverse_lazy('finish-add')
@@ -36,7 +36,7 @@ class DeleteBookView(DeleteView):
 
 class UpdateBookView(UpdateView):
     model = Book
-    fields = ('title', 'text', 'category')
+    fields = ('title', 'text', 'category', 'thumbnail')
     template_name = 'book/book_update.html'
     # 操作が完了した後にどこのページに飛ぶのかを決める
     # success_url = reverse_lazy('list-book')
