@@ -17,6 +17,7 @@ class Book(models.Model):
         max_length=100,
         choices = CATEGORY
         )
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     
     # 管理画面でデータの判別をしやすくする
     def __str__(self):

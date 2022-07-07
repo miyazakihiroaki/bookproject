@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from typing_extensions import Self
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy 
@@ -25,6 +26,11 @@ class CreateBookView(LoginRequiredMixin, CreateView):
     # 操作が完了した後にどこのページに飛ぶのかを決める
     # success_url = reverse_lazy('list-book')
     success_url = reverse_lazy('finish-add')
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        
+        return super().form_valid(form)
 
 
 class DeleteBookView(LoginRequiredMixin, DeleteView):
@@ -34,6 +40,14 @@ class DeleteBookView(LoginRequiredMixin, DeleteView):
     # success_url = reverse_lazy('list-book')
     success_url = reverse_lazy('finish-delete')
     
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        
+        if obj.user != self.request.user:
+            raise PermissionDenied
+        
+        return obj
+    
 
 class UpdateBookView(LoginRequiredMixin, UpdateView):
     model = Book
@@ -41,7 +55,16 @@ class UpdateBookView(LoginRequiredMixin, UpdateView):
     template_name = 'book/book_update.html'
     # 操作が完了した後にどこのページに飛ぶのかを決める
     # success_url = reverse_lazy('list-book')
-    success_url = reverse_lazy('finish-update')
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        
+        if obj.user != self.request.user:
+            raise PermissionDenied
+        
+        return obj
+    
+    def get_success_url(self):
+        return reverse('detail-book', kwargs={'pk':self.object.id})
 
 
 class FinishDeleteView(TemplateView):
