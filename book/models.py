@@ -18,6 +18,7 @@ class Book(models.Model):
         choices = CATEGORY
         )
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    # on_delete=models.CASCADEを指定すると、ユーザーが消去された時本全体のデータが消える
     
     # 管理画面でデータの判別をしやすくする
     def __str__(self):
