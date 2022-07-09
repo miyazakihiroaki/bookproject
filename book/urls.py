@@ -15,3 +15,5 @@ urlpatterns = [
     path('finish_add', views.FinishAddView.as_view(), name="finish-add"),
     path('finish-update', views.FinishUpdateView.as_view(), name="finish-update") ,
 ]
+
+# nameを忘れない
