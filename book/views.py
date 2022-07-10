@@ -124,6 +124,26 @@ def index_price_view(request):
     page_number = request.GET.get('page',1)
     page_obj = paginator.page(page_number)
     
-    return render(request, 'book/index_prime.html',{'object_list':object_list, 'ranking_list': ranking_list, 'page_obj':page_obj})
+    return render(request, 'book/index_price.html',{'object_list':object_list, 'ranking_list': ranking_list, 'page_obj':page_obj})
     
+
+def index_price_reverse_view(request):
+    object_list = Book.objects.order_by('price')
+    ranking_list = Book.objects.annotate(avg_rating=Avg('review__rate')).order_by('-avg_rating')
+
+    paginator = Paginator(ranking_list, ITEM_PER_PAGE)
+    page_number = request.GET.get('page',1)
+    page_obj = paginator.page(page_number)
     
+    return render(request, 'book/index_price_reverse.html',{'object_list':object_list, 'ranking_list': ranking_list, 'page_obj':page_obj})
+
+
+def index_new_view(request):        
+    object_list = Book.objects.order_by('-id')
+    ranking_list = Book.objects.annotate(avg_rating=Avg('review__rate')).order_by('-avg_rating')
+
+    paginator = Paginator(ranking_list, ITEM_PER_PAGE)
+    page_number = request.GET.get('page',1)
+    page_obj = paginator.page(page_number)
+    
+    return render(request, 'book/index_new.html',{'object_list':object_list, 'ranking_list': ranking_list, 'page_obj':page_obj})

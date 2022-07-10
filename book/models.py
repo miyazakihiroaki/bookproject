@@ -18,6 +18,7 @@ class Book(models.Model):
         max_length=100,
         choices = CATEGORY
         )
+    # data_added = models.DateTimeField(auto_now_add = True)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     # on_delete=models.CASCADEを指定すると、ユーザーが消去された時本全体のデータが消える
     
