@@ -28,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = KEY
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# TIME_ZONE = 'Asia/Tokyo'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://bookproject-app.herokuapp.com/']
+ALLOWED_HOSTS = ['bookproject-app.herokuapp.com']
 
 
 # Application definition
@@ -141,5 +141,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'index'
+
 LOGOUT_REDIRECT_URL = 'index'
 

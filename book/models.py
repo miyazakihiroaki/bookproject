@@ -5,6 +5,7 @@ from .consts import MAX_RATE
 # from turtle import title
 
 RATE_CHOICES = [(x, str(x)) for x in range(0, MAX_RATE + 1)]
+
 CATEGORY = (('business', 'ビジネス'),('life', '生活'),('other','その他'))
 
 
@@ -18,7 +19,6 @@ class Book(models.Model):
         max_length=100,
         choices = CATEGORY
         )
-    # data_added = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     # on_delete=models.CASCADEを指定すると、ユーザーが消去された時本全体のデータが消える
     
