@@ -1,15 +1,9 @@
-settings_local.py
-
-.env
-
 __pycache__/
-
+.env
 /venv/
-
 /media/*
 !/media/.gitkeep
-
 /static/*
 !/static/.gitkeep
-
 db.sqlite3
+settings_local.py
