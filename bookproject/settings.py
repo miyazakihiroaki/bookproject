@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from .settings_local import *
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -26,14 +25,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # デプロイするときに注意
 # SECRET_KEY = KEY
+
+
 SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-_!$kx(wvk*jp+@it&***#%w2m#)5uiyig^i=-fx^xcl_%8q54b'
 
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['bookproject-app.herokuapp.com']
+ALLOWED_HOSTS = ['bookproject-app.herokuapp.com','127.0.0.1']
 
 
 # Application definition
