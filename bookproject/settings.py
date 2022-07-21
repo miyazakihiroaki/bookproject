@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'book.apps.BookConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -145,4 +146,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'index'
 
 LOGOUT_REDIRECT_URL = 'index'
+
+AWS_S3_ACCESS_KEY_ID = 'AKIA5NIUPSXYW5VQU67S'
+AWS_S3_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'zakky'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 

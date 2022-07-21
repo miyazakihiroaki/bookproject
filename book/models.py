@@ -36,3 +36,7 @@ class Review(models.Model):
     
     def __str__(self):
         return self.title
+
+class File(models.Model):
+    title = models.TextField()
+    file = models.FileField()

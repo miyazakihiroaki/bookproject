@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from .consts import ITEM_PER_PAGE
@@ -9,6 +10,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import (ListView, DetailView, CreateView, DeleteView, UpdateView,)
 from .models import Book, Review
 from django.views.generic import TemplateView
+from django.http import HttpResponse
 
 
 class ListBookView(LoginRequiredMixin, ListView):
@@ -147,3 +149,7 @@ def index_new_view(request):
     page_obj = paginator.page(page_number)
     
     return render(request, 'book/index_new.html',{'object_list':object_list, 'ranking_list': ranking_list, 'page_obj':page_obj})
+
+
+def uploadview(request):
+    return HttpResponse('')
