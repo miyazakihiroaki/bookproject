@@ -28,7 +28,7 @@ class DetailBookView(LoginRequiredMixin, DetailView):
 class CreateBookView(LoginRequiredMixin, CreateView):
     template_name = 'book/book_create.html'
     model = Book
-    fields = ('title', 'text', 'category', 'thumbnail')
+    fields = ('title', 'text', 'category', 'price', 'thumbnail')
     # 操作が完了した後にどこのページに飛ぶのかを決める
     # success_url = reverse_lazy('list-book')
     success_url = reverse_lazy('finish-add')
