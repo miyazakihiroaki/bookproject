@@ -1,0 +1,2 @@
+MAX_RATE = 10
+ITEM_PER_PAGE = 2
